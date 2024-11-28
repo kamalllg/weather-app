@@ -16,7 +16,7 @@
     <table class="table table-bordered border-dark" *ngIf="cityWeatherReports">
       <tbody>
         <tr>
-          <td colspan="2" class="text-center">Date : {{item.dt_txt | date:'DD/MM/YYYY'}}</td>
+          <td colspan="2" class="text-center">Date : {{item.dt_txt | date:'dd/MM/YYYY'}}</td>
         </tr>
         <tr>
           <td class="bg-warning text-center" colspan="2">Temperature</td>
@@ -39,6 +39,9 @@
         </tr>
       </tbody>
     </table>
-    
+  </div>
+  
+  <div class="text-center" *ngIf="!cityWeatherReports.length">
+    <h3>Data Not Found...!</h3>
   </div>
 </div>
