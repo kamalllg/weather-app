@@ -1,0 +1,47 @@
+<div class="row container-fluid m-3">
+  <div class="col-sm-6 col-md-4">
+    <h2 class="text-warning">Weather in your City</h2>
+  </div>
+  <div class="col-sm-6 d-flex col-md-4">
+    <input type="text" class="form-control" [(ngModel)]="city" />
+    <button type="button" class="btn btn-warning ml-2" (click)="getWeatherReport(city)">Search</button>
+  </div>
+  <div class="col-sm-6 col-md-1" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+    </div>
+  </div>
+</div>
+<div class="row d-flex align-items-center justify-content-center">
+  <div class="col-sm-12 col-md-2" *ngFor="let item of cityWeatherReports">
+    <table class="table table-bordered border-dark" *ngIf="cityWeatherReports">
+      <tbody>
+        <tr>
+          <td colspan="2" class="text-center">Date : {{item.dt_txt | date:'dd/MM/YYYY'}}</td>
+        </tr>
+        <tr>
+          <td class="bg-warning text-center" colspan="2">Temperature</td>
+        </tr>
+        <tr>
+          <td class="text-center">Min</td>
+          <td class="text-center">Max</td>
+        </tr>
+        <tr>
+          <td class="text-center">{{item.main.temp_min}}</td>
+          <td class="text-center">{{item.main.temp_max}}</td>
+        </tr>
+        <tr>
+          <td class="text-center">Pressure</td>
+          <td class="text-center">{{item.main.pressure}}</td>
+        </tr>
+        <tr>
+          <td class="text-center">Humidity</td>
+          <td class="text-center">{{item.main.humidity}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="text-center" *ngIf="!cityWeatherReports.length">
+    <h3>Data Not Found...!</h3>
+  </div>
+</div>
